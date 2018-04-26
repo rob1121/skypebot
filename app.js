@@ -22,7 +22,12 @@ server.post('/api/messages', connector.listen());
 
 // Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
-  translate(session.message.text, 'es').then(text => {
+  const willTranslateInEnglish = session.message.text.includes('english of');
+
+  if(willTranslateInEnglish) {
+    
+  }
+  translate(session.message.text, 'tl').then(text => {
     session.send("You said: %s", text);
   });
 });
